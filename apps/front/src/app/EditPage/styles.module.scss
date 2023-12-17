@@ -1,0 +1,58 @@
+td.containerCel {
+  padding: 2px !important;
+}
+
+th.titleDay {
+  background: rgba(226, 230, 255, 0.56) !important;
+  font-size: 24px;
+}
+
+.cellFocus {
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  background: rgba(255, 10, 10, 0.05);
+  cursor: pointer;
+  min-height: 40px;
+}
+
+.cellDnd {
+  @extend .cellFocus;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 255, 255, 0.05);
+
+  .subject {
+    font-size: 16px;
+  }
+
+  .teacher {
+    font-size: 12px;
+    align-self: flex-end;
+    font-style: italic;
+  }
+}
+
+.cellEmpty {
+  @extend .cellFocus;
+}
+.overlayClassName {
+  max-height: 86vh;
+  overflow: auto;
+}
+
+.cellSelected {
+  background-color: rgba(200, 200, 255, 0.56) !important;
+}
+
+.timeCell {
+  width: 130px;
+}
+
+.listSubjects {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
