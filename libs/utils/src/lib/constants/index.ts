@@ -1,4 +1,4 @@
-import {TSubjectsTeachers} from "../../../../../apps/front/src/app/types";
+import {TSubjectsTeachers} from "../types";
 
 export const DEFAULT_TIMES: string[] = [
   '08:30 - 9:10',
