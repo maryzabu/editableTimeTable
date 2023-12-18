@@ -12,6 +12,7 @@ export const DEFAULT_TIMES: string[] = [
 ];
 
 
+
 const DEFAULT_SUBJECTS_TEACHERS: Omit<TSubjectsTeachers, 'id'>[] = [
   {
     subject: 'История', //История

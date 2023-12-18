@@ -6,9 +6,18 @@ import classNames from "classnames";
 
 export const CellEmpty: React.FC<TListSubject> = ({subjects}) => {
   const [selected, setSelected] = useState(false);
+  const [open, setOpen] = useState(false);
+  const onOpenChange = (value: boolean) => {
+    setSelected(value);
+    setOpen(value);
+  }
+  const onSetSubject = (subjectId: number) => {
+    console.log(subjectId);
+  }
 
-  return <Popover placement="right" content={<ListSubject subjects={subjects}/>} trigger="click"
-                  onOpenChange={setSelected} overlayClassName={styles.overlayClassName}>
+  return <Popover placement="right" content={<ListSubject subjects={subjects} onSetSubject={onSetSubject}/>}
+                  trigger="click"
+                  onOpenChange={setSelected} overlayClassName={styles.overlayClassName} open={open}>
     <div className={classNames(styles.cellEmpty, {[styles.cellSelected]: selected})}></div>
   </Popover>;
 }
