@@ -2,7 +2,9 @@
   "name": "@nx-e/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx serve front"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^10.0.2",
@@ -11,6 +13,7 @@
     "@swc/helpers": "~0.5.2",
     "antd": "^5.12.2",
     "axios": "^1.0.0",
+    "classnames": "^2.3.2",
     "react": "18.2.0",
     "react-dnd": "^16.0.1",
     "react-dom": "18.2.0",
