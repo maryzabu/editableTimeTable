@@ -4,6 +4,7 @@ import {AppController} from './app.controller';
 import {AppService} from './app.service';
 import {ConfigModule} from '@nestjs/config';
 import * as Joi from '@hapi/joi';
+import {TtDataModule} from "./ttData/ttData.module";
 
 @Module({
   imports: [
@@ -16,10 +17,11 @@ import * as Joi from '@hapi/joi';
         POSTGRES_DB: Joi.string().required(),
         PORT: Joi.number(),
       })
-    })
+    }),
+    TtDataModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+    providers: [AppService],
 })
 export class AppModule {
 }

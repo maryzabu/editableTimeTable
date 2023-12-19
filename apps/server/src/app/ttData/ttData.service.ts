@@ -9,7 +9,7 @@ export class TtDataService {
   }
 
   getAll() {
-    return this.repository.find();
+    return this.repository.find({order: {dayId: 'ASC', timeId: 'ASC', groupId: 'ASC'}});
   }
 
   getById(id: number) {

@@ -1,9 +1,23 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
+import {TtDataService} from "./ttData/ttData.service";
+import {mapTtData} from "./utils";
 
 @Injectable()
 export class AppService {
-  getData(): { message: string } {
-    return { message: 'Hello API' };
+  constructor(private ttDataService: TtDataService) {
   }
-  getSubjects
+
+  getData(): { message: string } {
+    return {message: 'Hello API'};
+  }
+
+  async getTtData() {
+    const ttdata = await this.ttDataService.getAll();
+    if (!ttdata) {
+      return;
+    }
+
+    return mapTtData(ttdata);
+  }
+
 }
