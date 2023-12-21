@@ -1,4 +1,4 @@
-import {HttpException, Injectable} from "@nestjs/common";
+import {HttpException, HttpStatus, Injectable} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {TtDataEntity} from "./ttData.entity";
 import {Repository} from "typeorm";
@@ -30,7 +30,7 @@ export class TtDataService {
     return newTtData;
   }
 
-  async update(id: number, values: Partial<TtDataEntity>) {
+  async patch(id: number, values: Partial<TtDataEntity>) {
     await this.repository.update({id}, values);
     return this.getById(id);
   }
@@ -42,6 +42,15 @@ export class TtDataService {
       return this.addItem(values);
     }
 
-    return this.update(data.id, values);
+    return this.patch(data.id, values);
+  }
+
+  async deleteById(id: number) {
+    const deleteResponse = await this.repository.delete(id);
+
+    if (!deleteResponse.affected) {
+      throw new HttpException(`Не найдены данные для удаления, с идентификатором id=${id}`, HttpStatus.NOT_FOUND);
+    }
+    return {data: `Данные с идентификатором id=${id}, успешно удалены`};
   }
 }

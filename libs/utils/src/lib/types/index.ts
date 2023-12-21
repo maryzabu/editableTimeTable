@@ -4,19 +4,20 @@ export type TSubjectsTeachers = {
   teacher: string;
 
 };
-export type TGroupSubject = { id: number, name: string;  ttDataId?: number; subjectTeacher?: TSubjectsTeachers; };
+export type TGroupSubject = { id: number, name: string; ttDataId?: number; subjectTeacher?: TSubjectsTeachers; };
 export type TGroupObject = Record<string, TGroupSubject>;
+export type TNameId = {
+  name: string;
+  id: number;
+}
 
 export type TimeTableRow = {
-  day: string;
-  dayId: number;
-  time: string;
-  timeId: number;
+  time: TNameId;
   groupObject: TGroupObject;
+  dayId: number;
 };
 
 export type TimeTableResponse = {
-  day: string;
-  dayId: number;
+  day: TNameId;
   list: TimeTableRow[];
 }[];

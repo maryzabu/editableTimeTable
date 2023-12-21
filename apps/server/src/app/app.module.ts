@@ -5,6 +5,7 @@ import {AppService} from './app.service';
 import {ConfigModule} from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 import {TtDataModule} from "./ttData/ttData.module";
+import {DatabaseModule} from "./database/database.module";
 
 @Module({
   imports: [
@@ -18,10 +19,11 @@ import {TtDataModule} from "./ttData/ttData.module";
         PORT: Joi.number(),
       })
     }),
+    DatabaseModule,
     TtDataModule
   ],
   controllers: [AppController],
-    providers: [AppService],
+  providers: [AppService],
 })
 export class AppModule {
 }
