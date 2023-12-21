@@ -1,4 +1,4 @@
-import {TGroupObject, TimeTableResponse, TimeTableRow, TSubjectsTeachers} from "../types";
+import {TSubjectsTeachers} from "../types";
 
 export const DEFAULT_TIMES: string[] = [
   '08:30 - 9:10',
@@ -11,9 +11,7 @@ export const DEFAULT_TIMES: string[] = [
   '14:20 - 15:00'
 ];
 
-
-
-const DEFAULT_SUBJECTS_TEACHERS: Omit<TSubjectsTeachers, 'id'>[] = [
+export const DEFAULT_SUBJECTS_TEACHERS: Omit<TSubjectsTeachers, 'id'>[] = [
   {
     subject: 'История', //История
     teacher: 'Димидов Л.Г.' // Иванов Иван Александрович
@@ -200,37 +198,7 @@ const DEFAULT_SUBJECTS_TEACHERS: Omit<TSubjectsTeachers, 'id'>[] = [
   }
 ];
 
-const DEFAULT_SUBJECTS_TEACHERS_IDS: TSubjectsTeachers[] = DEFAULT_SUBJECTS_TEACHERS.map((row, index) => ({
-  ...row,
-  id: index + 1
-}));
-
 export const DEFAULT_GROUPS: string[] = ['10-Г КЛАСС / ауд. 307', '10-СЭ КЛАСС / ауд. 302', '10-Т КЛАСС / ауд. 306', '11-Г КЛАСС / ауд. 313', '11-СЭ КЛАСС / ауд. 308', '11-Т КЛАСС / ауд. 304'];
 
-const DEFAULT_DAYS: string[] = ['ПОНЕДЕЛЬНИК', 'ВТОРНИК', 'СРЕДА', 'ЧЕТВЕРГ', 'ПЯТНИЦА'];
-
-export const EMPTY_GROUP_OBJECT: TGroupObject = DEFAULT_GROUPS.reduce((accProperty, property, index) => ({
-  ...accProperty,
-  [`group-${index}`]: {name: property}
-}), {});
-
-export const mockTimeTableResponse = DEFAULT_DAYS.map<TimeTableResponse[number]>((day) => {
-
-  const list = DEFAULT_TIMES.reduce<TimeTableRow[]>((accTimes, time) => {
-    const curRow = {
-      groupObject:EMPTY_GROUP_OBJECT,
-      day,
-      time
-    } as TimeTableRow;
-
-    return [...accTimes, curRow];
-  }, []);
-
-  return {
-    day,
-    list
-  };
-});
-
-export const mockSubjectsResponse = DEFAULT_SUBJECTS_TEACHERS_IDS;
+export const DEFAULT_DAYS: string[] = ['ПОНЕДЕЛЬНИК', 'ВТОРНИК', 'СРЕДА', 'ЧЕТВЕРГ', 'ПЯТНИЦА'];
 
