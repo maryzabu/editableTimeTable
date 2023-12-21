@@ -24,6 +24,13 @@ th.titleDay {
 
   .subject {
     font-size: 16px;
+    width: 100%;
+    display:flex;
+
+    .deleteButton {
+      margin-left: auto;
+    }
+
   }
 
   .teacher {
@@ -36,6 +43,7 @@ th.titleDay {
 .cellEmpty {
   @extend .cellFocus;
 }
+
 .overlayClassName {
   max-height: 86vh;
   overflow: auto;

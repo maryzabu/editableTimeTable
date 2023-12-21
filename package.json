@@ -3,10 +3,15 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve front"
+    "start": "nx run-many -t serve -p server front",
+    "stopDocker": "docker-compose down",
+    "startDocker": "docker-compose up",
+    "startFront": "nx serve front",
+    "startBack": "nx serve server"
   },
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
     "@hapi/joi": "^17.1.1",
     "@nestjs/common": "^10.0.2",
     "@nestjs/config": "^3.1.1",

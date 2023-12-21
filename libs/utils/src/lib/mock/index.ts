@@ -2,10 +2,10 @@ import {DEFAULT_DAYS, DEFAULT_GROUPS, DEFAULT_SUBJECTS_TEACHERS, DEFAULT_TIMES} 
 import {TGroupObject} from "../types";
 
 export const getGroups = () => DEFAULT_GROUPS.map((name, index) => ({name, id: index + 1}));
-
-export const getGroupsObject = ():TGroupObject => getGroups().reduce((accProperty, property, index) => ({
+export const getGroupKeyById = (id: number) => `group-${(id).toString().padStart(2, '0')}`;
+export const getGroupsObject = (): TGroupObject => getGroups().reduce((accProperty, property, index) => ({
   ...accProperty,
-  [`group-${(index+1).toString().padStart(2,'0')}`]: property
+  [getGroupKeyById(index + 1)]: property
 }), {});
 
 export const getSubjects = () => DEFAULT_SUBJECTS_TEACHERS.map((row, index) => ({

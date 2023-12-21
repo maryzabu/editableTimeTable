@@ -1,8 +1,9 @@
 import React from "react";
-import {TSubjectsTeachers} from "../types";
+
 import {List} from "antd";
 import {CellDnd} from "./CellDnd";
 import styles from "./styles.module.scss";
+import {TSubjectsTeachers} from "@utils";
 
 export type TListSubject = {
   subjects: TSubjectsTeachers[];

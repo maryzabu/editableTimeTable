@@ -17,7 +17,6 @@ export class AppService {
     if (!ttdata) {
       return;
     }
-    Logger.log('ttdata', ttdata);
 
     return mapTtData(ttdata);
   }

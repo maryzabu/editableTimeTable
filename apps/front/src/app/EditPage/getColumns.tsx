@@ -1,8 +1,8 @@
 import {ColumnsType} from "antd/lib/table/interface";
-import {TGroupObject, TimeTableResponse, TimeTableRow, TSubjectsTeachers} from "@utils";
+import {CreateTtDataDto, TGroupObject, TimeTableResponse, TimeTableRow, TSubjectsTeachers} from "@utils";
 import styles from "./styles.module.scss";
 import {CellEmpty} from "./CellEmpty";
-import {CellDnd} from "./CellDnd";
+import {CellDnd, CellDndPopOver} from "./CellDnd";
 import React from "react";
 import {TSelectedItem} from "./types";
 
@@ -14,6 +14,8 @@ export type TGetColumnsProps = TimeTableResponse[number] & {
   setSelectedItem: (selected?: TSelectedItem) => void;
   setOpenChooser: (open: boolean) => void;
   openChooser: boolean;
+  onSetItemSubject: (values: CreateTtDataDto, id?: number) => void;
+  onDeleteTtData: (id: number) => void;
 }
 
 export const getColumns = (
@@ -25,7 +27,9 @@ export const getColumns = (
     openChooser,
     setOpenChooser,
     setSelectedItem,
-    selectedItem
+    selectedItem,
+    onSetItemSubject,
+    onDeleteTtData
   }: TGetColumnsProps): TColumns => ([
   {
     title: day.name,
@@ -35,8 +39,8 @@ export const getColumns = (
         title: 'Время',
         key: 'child-time',
         width: 100,
-        dataIndex: 'time',
         className: styles.timeCell,
+        render: (_, record) => record.time.name
       },
       ...(Object.entries(groupObject).map<TColumns[number]>(([groupKey, group]) => ({
         title: group.name,
@@ -44,7 +48,7 @@ export const getColumns = (
         className: styles.containerCel,
         render: (_, record, index) => {
           const subjectTeacher = record.groupObject[groupKey]?.subjectTeacher;
-          const ComponentCell = subjectTeacher ? CellDnd : CellEmpty;
+          const ComponentCell = subjectTeacher ? CellDndPopOver : CellEmpty;
           const propsComponent = {
             subjects,
             group,
@@ -54,7 +58,9 @@ export const getColumns = (
             setSelectedItem,
             selectedItem,
             groupObject,
-            list
+            list,
+            onSetItemSubject,
+            onDeleteTtData
           }
 
           return (
