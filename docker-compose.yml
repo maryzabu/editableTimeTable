@@ -9,6 +9,8 @@ services:
       - docker.env
     networks:
       - pgnetwork
+    volumes: 
+      - pgdata:/var/lib/postgresql
 
   pgadmin:
     links:
@@ -25,3 +27,6 @@ services:
 networks:
   pgnetwork:
     driver: bridge
+
+volumes:
+  pgdata:
