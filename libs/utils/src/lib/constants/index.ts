@@ -26,7 +26,7 @@ export const DEFAULT_SUBJECTS_TEACHERS: Omit<TSubjectsTeachers, 'id'>[] = [
   },
   {
     subject: 'Астрономия',
-    teacher: 'коваль В.В.'
+    teacher: 'Коваль В.В.'
   },
   {
     subject: 'Физическая культура',
@@ -195,7 +195,11 @@ export const DEFAULT_SUBJECTS_TEACHERS: Omit<TSubjectsTeachers, 'id'>[] = [
   {
     subject: 'Разговоры о важном',
     teacher: 'Ядак В.С.'
-  }
+  },
+  {
+    subject: 'ПЕРЕРЫВ',
+    teacher: ''
+  },
 ];
 
 export const DEFAULT_GROUPS: string[] = ['10-Г КЛАСС / ауд. 307', '10-СЭ КЛАСС / ауд. 302', '10-Т КЛАСС / ауд. 306', '11-Г КЛАСС / ауд. 313', '11-СЭ КЛАСС / ауд. 308', '11-Т КЛАСС / ауд. 304'];

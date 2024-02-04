@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nx run-many -t serve -p server front",
     "stopDocker": "docker-compose down",
-    "startDocker": "docker-compose up",
+    "start-docker": "docker-compose up",
     "startFront": "nx serve front",
     "startBack": "nx serve server"
   },
